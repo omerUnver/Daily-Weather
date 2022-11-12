@@ -18,6 +18,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     var weatherArray : [weatherModel]? = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         locationSetup()
     }
     func locationSetup(){
@@ -26,7 +28,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
@@ -72,6 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             if error != nil {
                 self.alertFunc(title: "ERROR!!!", message: error?.localizedDescription ?? "ERROR!!!")
             }
+            
             self.weatherArray = [weatherModel]()
             do {
                 let json2 = try JSONSerialization.jsonObject(with: data!) as! [String : Any]
@@ -92,6 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                             for weatherIcons in apiWeather {
                                 if let weathersIcon = weatherIcons["icon"] as? String {
                                         weather.weatherIcons = weathersIcon
+                                    
                                 }
                             }
                         }
@@ -105,7 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                 self.alertFunc(title: "ERROR!!!!", message: "error!!!!")
             }
         }
-            task.resume()
+            task2.resume()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
