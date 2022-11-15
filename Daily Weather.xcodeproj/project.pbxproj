@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F03709629211D5200FD3135 /* weatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F03709529211D5200FD3135 /* weatherCollectionViewCell.swift */; };
+		0F0370982921264C00FD3135 /* hourlyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0370972921264C00FD3135 /* hourlyModel.swift */; };
 		0F1E432529205091007E9165 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E432429205091007E9165 /* AppDelegate.swift */; };
 		0F1E432729205091007E9165 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E432629205091007E9165 /* SceneDelegate.swift */; };
 		0F1E432929205091007E9165 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E432829205091007E9165 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F03709529211D5200FD3135 /* weatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F0370972921264C00FD3135 /* hourlyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hourlyModel.swift; sourceTree = "<group>"; };
 		0F1E432129205091007E9165 /* Daily Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F1E432429205091007E9165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F1E432629205091007E9165 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				0F1E433A292050CA007E9165 /* weatherModel.swift */,
+				0F0370972921264C00FD3135 /* hourlyModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				0F1E433D292052A9007E9165 /* weatherTableViewCell.swift */,
+				0F03709529211D5200FD3135 /* weatherCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -163,6 +169,8 @@
 				0F1E432929205091007E9165 /* ViewController.swift in Sources */,
 				0F1E433E292052A9007E9165 /* weatherTableViewCell.swift in Sources */,
 				0F1E432529205091007E9165 /* AppDelegate.swift in Sources */,
+				0F03709629211D5200FD3135 /* weatherCollectionViewCell.swift in Sources */,
+				0F0370982921264C00FD3135 /* hourlyModel.swift in Sources */,
 				0F1E433B292050CA007E9165 /* weatherModel.swift in Sources */,
 				0F1E432729205091007E9165 /* SceneDelegate.swift in Sources */,
 			);
