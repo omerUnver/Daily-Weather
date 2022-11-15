@@ -9,6 +9,8 @@ import UIKit
 import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
+    
+   
     @IBOutlet weak var temp: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cityName: UILabel!
@@ -21,11 +23,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     @IBOutlet weak var yuksekLabel: UILabel!
     @IBOutlet weak var saatlikHavaDurumuLabel: UILabel!
     @IBOutlet weak var dusuk: UILabel!
-    
-    
     @IBOutlet weak var loading: UIActivityIndicatorView!
     var weatherArray : [weatherModel]? = []
     var hourlyArray : [hourlyModel]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hidenFunc()
@@ -63,6 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         locationManager.startUpdatingLocation()
     }
     
+//    Update locations and url request
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         latitude = location.coordinate.latitude
@@ -101,6 +103,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             }
         }
         task.resume()
+        
         //Daily
         let url2 = URLRequest(url: URL(string: "https://api.openweathermap.org/data/3.0/onecall?lat=\(latitude)&lon=\(longitude)&exclude=hourly&appid=0cf0b8aec57f0673aa317cfae9353996&units=metric")!)
         
@@ -143,6 +146,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             }
         }
             task2.resume()
+        
         //hourly
         let url3 = URLRequest(url: URL(string: "https://api.openweathermap.org/data/3.0/onecall?lat=\(latitude)&lon=\(longitude)&exclude=daily&appid=0cf0b8aec57f0673aa317cfae9353996&units=metric")!)
         let task3 = URLSession.shared.dataTask(with: url3) { data, response, error in
@@ -179,7 +183,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         }
         task3.resume()
     }
-
+    
+// TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! weatherTableViewCell
         let date = Date(timeIntervalSince1970: weatherArray![indexPath.item].dt!)
@@ -197,6 +202,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weatherArray!.count
     }
+    
+//    CollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hourlyCell", for: indexPath) as! weatherCollectionViewCell
         let date = Date(timeIntervalSince1970: hourlyArray![indexPath.item].dt!)
@@ -214,15 +221,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hourlyArray!.count
     }
-
+    
+//alert func
     func alertFunc(title : String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default)
         alert.addAction(okButton)
         self.present(alert, animated: true)
     }
-    
-
-
 }
 
