@@ -200,7 +200,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherArray!.count
+        return min(weatherArray!.count, 7)
     }
     
 //    CollectionView
@@ -219,7 +219,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return hourlyArray!.count
+        return min(hourlyArray!.count, 24)
     }
     
 //alert func
